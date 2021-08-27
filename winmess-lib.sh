@@ -1,4 +1,4 @@
-# 2021-08-26    WinMess Inspired by WinGrid-antiX
+# 2021-08-27    WinMess Inspired by WinGrid-antiX
 #               Utility functions.
 
 # Display error message.

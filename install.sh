@@ -1,4 +1,4 @@
-# 2021-08-26    WinMess inspired by WinGrid-antiX
+# 2021-08-27    WinMess inspired by WinGrid-antiX
 #               Installation script.
 #
 # Usage:

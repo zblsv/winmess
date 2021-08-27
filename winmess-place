@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 2021-08-26   WinMess inspired by WinGrid-antiX
+# 2021-08-27   WinMess inspired by WinGrid-antiX
 #              Place and resize active window.
 
 PROGNAME=${0##*/}
@@ -39,12 +39,12 @@ init_res
 wmctrl -r :ACTIVE: -b remove,maximized_horz,maximized_vert
 wmctrl -r :ACTIVE: -b remove,fullscreen
 
-HINT_CATEGORY="$1"
+HINT_NAME="$1"
 
-LEFT="${HINT[x$HINT_CATEGORY]}"
-TOP="${HINT[y$HINT_CATEGORY]}"
-WIDTH="${HINT[w$HINT_CATEGORY]}"
-HEIGHT="${HINT[h$HINT_CATEGORY]}"
+LEFT="${HINT[x$HINT_NAME]}"
+TOP="${HINT[y$HINT_NAME]}"
+WIDTH="${HINT[w$HINT_NAME]}"
+HEIGHT="${HINT[h$HINT_NAME]}"
 
 # Distance from screen top edge to top edge of the window.
 OFFSETTOP=$(($TOP+$GAPTOP))
