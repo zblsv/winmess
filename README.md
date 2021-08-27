@@ -28,13 +28,15 @@ So WinMess here for this.  It place active window exactly where it instructed by
    git clone https://github.com/zblsv/winmess.git
    ```
 2. Read all the code for security holes, fatal errors, performance glitches.
-3. Install into the home.
+3. Install into the home (recomended).
    ```sh
    . install.sh
    ```
-   Or into the system.
+   Or into the system (not recomended).
    ```sh
    sudo . install.sh /usr/local/bin
+   ME=$(whoami)
+   sudo chown $ME:$ME $HOME/.config/winmess.conf
    ```
 
 ## Usage
