@@ -28,10 +28,13 @@ cat <<EOS
    So winmess-dim shows screen width and hight for convenience.
 EOS
 )
+
+PROGDIR=${0%/*}
+
 case $PROGNAME in
    '' )
       PROGNAME='winmess-usage'
-      PROGVERSION="$(winmess-version)"
+      PROGVERSION="$($PROGDIR/winmess-version)"
       ;;
    winmess-place )
       SUMMARY=${TEXT[place_summary]}
@@ -68,7 +71,7 @@ $HELP
    $HOME/.config/winmess.conf
 
    Requires:
-      x11-utils package, wmctrl, xdpyinfo, yad, xwininfo, awk, fmt 
+      x11-utils package, wmctrl, xdpyinfo, yad, xwininfo, awk, fmt, sed, tr...
 
    See also:
       $SEEALSO
