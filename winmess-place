@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# 2021-08-26   WinMess inspired by WinGrid-antiX
+#              Place and resize active window.
+
+PROGNAME=${0##*/}
+PROGVERSION=$(winmess-version)
+PROGDIR=${0%/*}
+
+# Location of utility functions.
+LIBFILE="$PROGDIR/winmess-lib.sh"
+
+# Load the utilities.
+. $LIBFILE
+
+# Initialize usage prompt.
+init_help "$1"
+
+# Location of the user configurable settings file.
+CONFIGFILE="$HOME/.config/winmess.conf"
+
+# Obtain the user specifiable configuration.
+if [ -f $CONFIGFILE ]
+then
+    . $CONFIGFILE
+else
+    # Display an error message and exit.
+    ERRMSG=" $CONFIGFILE \n Was not found \n\n Exiting..."
+    error "$ERRMSG"
+    exit 1
+fi
+
+# Get screen resolutions.
+init_res
+
+# Put Window into Grid Pattern
+# ----------------------------
+
+# Ensure the active window is not in maximized mode nor in fullscreen mode.
+wmctrl -r :ACTIVE: -b remove,maximized_horz,maximized_vert
+wmctrl -r :ACTIVE: -b remove,fullscreen
+
+HINT_CATEGORY="$1"
+
+LEFT="${HINT[x$HINT_CATEGORY]}"
+TOP="${HINT[y$HINT_CATEGORY]}"
+WIDTH="${HINT[w$HINT_CATEGORY]}"
+HEIGHT="${HINT[h$HINT_CATEGORY]}"
+
+# Distance from screen top edge to top edge of the window.
+OFFSETTOP=$(($TOP+$GAPTOP))
+
+# Distance from screen left edge to left edge of the window.
+OFFSETLEFT=$(($LEFT+$GAPLEFT))
+
+# Dimensions of the window.
+WINHEIGHT=$(($HEIGHT-$WINHEIGHT_LESS))
+WINWIDTH=$WIDTH
+
+# Position and resize the active window.
+wmctrl -r :ACTIVE: -e $GRAVITY,$OFFSETLEFT,$OFFSETTOP,$WINWIDTH,$WINHEIGHT

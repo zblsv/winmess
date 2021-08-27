@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# 2021-08-26   WinMess inspired by WinGrid-antiX
+#              Write the usage messege on the screen.
+
+SUMMARY='Prints usage message on screen.'
+HELP='Internal script not intended to run separatly.'
+
+declare -A TEXT
+
+TEXT[place_summary]='Place and resize active window to specifired hints.'
+TEXT[place_help]=$(
+cat <<EOS
+   Place and resize active window to specifired hints.
+   The hints are defined in winmess.conf as dictionary keys.
+   
+   So
+      winmess-place T
+   places and resizes active window to
+      350 0 1100 1000
+   that can be specifired in $HOME/.config/winmess.conf
+EOS
+)
+
+TEXT[dim_summary]='Get screen resolutions in pixels.'
+TEXT[dim_help]=$(
+cat <<EOS
+   Configuration script in $HOME/.config/winmess.conf must use screen dimentions in pixels.
+   So winmess-dim shows screen width and hight for convenience.
+EOS
+)
+case $PROGNAME in
+   '' )
+      PROGNAME='winmess-usage'
+      PROGVERSION="$(winmess-version)"
+      ;;
+   winmess-place )
+      SUMMARY=${TEXT[place_summary]}
+      HELP=${TEXT[place_help]}
+      ;;
+   winmess-dim )
+      SUMMARY=${TEXT[dim_summary]}
+      HELP=${TEXT[dim_help]}
+      ;;
+esac
+
+SEEALSO='winmess-place, winmess-dim, winmess-version'
+SEEALSO=$(echo ${SEEALSO/$PROGNAME/} | tr -d , | tr -s ' ' | sed -e 's/^ //' -e 's/ /, /g')
+
+cat << EOS | fmt
+
+$PROGNAME version $PROGVERSION
+   $SUMMARY
+
+Usage:
+   $PROGNAME <MyUsefulHintCategory>
+
+Options:
+   -h, --help     Show this output
+
+Summary:
+$HELP
+
+   Launching WinMess cripts is normally done using the keyboard via a combined key press.
+   The combination of keys are assigned by the system window manager and can
+   be reassigned if desired.
+
+   Optional configuration items are available in
+   $HOME/.config/winmess.conf
+
+   Requires:
+      x11-utils package, wmctrl, xdpyinfo, yad, xwininfo, awk, fmt 
+
+   See also:
+      $SEEALSO
+EOS

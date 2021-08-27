@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# 2021-08-26   WinMess Inspired by WinGrid-antiX
+#              Get screen resolutions.
+
+PROGNAME=${0##*/}
+PROGVERSION=$(winmess-version)
+PROGDIR=${0%/*}
+
+# Utility functions
+# -----------------
+
+# Location of utility functions.
+LIBFILE="$PROGDIR/winmess-lib.sh"
+. $LIBFILE
+
+# Help and Information
+# --------------------
+
+init_help $1
+
+# User Configurable Settings
+# --------------------------
+
+# Location of the user configurable settings file.
+CONFIGFILE="$HOME/.config/winmess.conf"
+
+# Obtain the user specifiable configuration
+. $CONFIGFILE
+
+# Initialize screen resolutions.
+init_res
+
+cat <<EOS
+
+Screen Resolutions
+   For use in $HOME/.config/winmess.conf
+
+Screen width: $SCREENWIDTH
+Screen height: $SCREENHEIGHT
+
+Screen half width: $SCREENHALFWIDTH
+Screen half height: $SCREENHALFHEIGHT
+
+Gravity: $GRAVITY
+   Always zero though...
+
+EOS
