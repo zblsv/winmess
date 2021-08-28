@@ -12,7 +12,7 @@ I use keyboard to launch them from Fluxbox main menu and don't want touch the mo
 
 [WinGrid-antiX][wingrid] is a good but not ideal solution for me. 
 I want to see Rox icons and Conky on my wide 1920x1080 monitor.
-I want place the browser some what centerized and wider than terminal emulator also centerized somehow.
+I want place the browser some what centered and wider than terminal emulator also centered somehow.
 
 So WinMess here for this.
 It place active window exactly where it instructed by config script (winmess.conf file).
