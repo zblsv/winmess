@@ -4,7 +4,6 @@
 
 
 
-
 ## Getting Started
 
 I usually place app windows in the same positions. 
@@ -18,13 +17,24 @@ I want place the browser some what centerized and wider than terminal emulator a
 So WinMess here for this.
 It place active window exactly where it instructed by config script (winmess.conf file).
 
+
 ### Prerequisites
 
-* x11-utils package
-* wmctrl
+x11-utils package for
 * xdpyinfo
-* awk
+* xwininfo
+
+
+wmcrtl package for
+* wmctrl
+
+
+Some Unix classics must be available...
+* awk (from gawk or mawk package)
 * fmt
+* sed
+* tr
+
 
 ### Installation
 
