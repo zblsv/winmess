@@ -3,8 +3,8 @@
 #              Get screen resolutions.
 
 PROGNAME=${0##*/}
-PROGVERSION=$(winmess-version)
 PROGDIR=${0%/*}
+PROGVERSION=$($PROGDIR/winmess-version)
 
 # Utility functions
 # -----------------

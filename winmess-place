@@ -3,8 +3,8 @@
 #              Place and resize active window.
 
 PROGNAME=${0##*/}
-PROGVERSION=$(winmess-version)
 PROGDIR=${0%/*}
+PROGVERSION=$($PROGDIR/winmess-version)
 
 # Location of utility functions.
 LIBFILE="$PROGDIR/winmess-lib.sh"
