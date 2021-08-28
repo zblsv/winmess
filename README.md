@@ -7,11 +7,16 @@
 
 ## Getting Started
 
-I usually place app windows in the same positions.  Text editors, terminal emulators, the browser (when is not full screen)---they all take up different but repetitive positions and sizes.  I use keyboard to launch them from Fluxbox main menu and don't want take the mouse.
+I usually place app windows in the same positions. 
+Text editors, terminal emulators, the browser (when is not full screen)---they all take up different but repetitive positions and sizes.
+I use keyboard to launch them from Fluxbox main menu and don't want take the mouse.
 
-[WinGrid-antiX][wingrid] is a good but not ideal solution for me.  I want to see Rox icons and Conky on my wide 1920x1080 monitor.  I want place the browser some what centerized and wider than terminal emulator also centerized somehow.
+[WinGrid-antiX][wingrid] is a good but not ideal solution for me. 
+I want to see Rox icons and Conky on my wide 1920x1080 monitor.
+I want place the browser some what centerized and wider than terminal emulator also centerized somehow.
 
-So WinMess here for this.  It place active window exactly where it instructed by config script (winmess.conf file).
+So WinMess here for this.
+It place active window exactly where it instructed by config script (winmess.conf file).
 
 ### Prerequisites
 
@@ -43,6 +48,7 @@ So WinMess here for this.  It place active window exactly where it instructed by
 
 Use git to fetch from the origin.
 See details here: [Getting changes from a remote repository](https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository)
+
 Update to current HEAD.
 ```sh
 git pull
