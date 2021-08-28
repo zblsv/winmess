@@ -19,5 +19,7 @@ CONFDIR="$HOME/.config"
 install -d $BINDIR $CONFDIR
 install -m 0640 winmess.conf $CONFDIR
 
-DIST='winmess-lib.sh winmess-version winmess-usage winmess-dim winmess-place'
+install -m 0640 winmess-lib.sh $BINDIR
+
+DIST='winmess-version winmess-usage winmess-dim winmess-place'
 install $DIST $BINDIR
