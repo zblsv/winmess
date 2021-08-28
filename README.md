@@ -39,6 +39,21 @@ So WinMess here for this.  It place active window exactly where it instructed by
    sudo chown $ME:$ME $HOME/.config/winmess.conf
    ```
 
+### Update to latest version
+
+Use git to fetch from the origin.
+See details here: [Getting changes from a remote repository](https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository)
+Update to current HEAD.
+```sh
+git pull
+```
+Then switch to specific release if needed.
+```sh
+git tag -l
+git checkout tags/0.1.0
+```
+
+
 ## Usage
 
 In ~/.config/winmess.conf define your placement hints.  Some examples given.
