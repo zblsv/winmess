@@ -8,7 +8,7 @@
 
 I usually place app windows in the same positions. 
 Text editors, terminal emulators, the browser (when is not full screen)---they all take up different but repetitive positions and sizes.
-I use keyboard to launch them from Fluxbox main menu and don't want take the mouse.
+I use keyboard to launch them from Fluxbox main menu and don't want touch the mouse.
 
 [WinGrid-antiX][wingrid] is a good but not ideal solution for me. 
 I want to see Rox icons and Conky on my wide 1920x1080 monitor.
