@@ -2,10 +2,6 @@
 
 [WinGrid-antiX][wingrid] like shell scripts for smart placing and resizing the active window under X11.
 
-
-
-## Getting Started
-
 I usually place app windows in the same positions. 
 Text editors, terminal emulators, the browser (when is not full screen)---they all take up different but repetitive positions and sizes.
 I use keyboard to launch them from Fluxbox main menu and don't want touch the mouse.
@@ -18,7 +14,7 @@ So WinMess here for this.
 It place active window exactly where it instructed by config script (winmess.conf file).
 
 
-### Prerequisites
+## Prerequisites
 
 x11-utils package for
 * xdpyinfo
@@ -29,6 +25,11 @@ wmcrtl package for
 * wmctrl
 
 
+yad package for
+* yad
+
+
+
 Some Unix classics must be available...
 * awk (from gawk or mawk package)
 * fmt
@@ -36,7 +37,7 @@ Some Unix classics must be available...
 * tr
 
 
-### Installation
+## Installation
 
 1. Clone the repo.
    ```sh
@@ -77,22 +78,11 @@ In ~/.config/winmess.conf define your placement hints.  Some examples given.
 Define hotkeys that winmess-place will run with your window manager.  I use Fluxbox on antiX Linux.
 In my ~/.fluxbox/keys is:
 ```
-!wingrid
-!Control 1 :ExecCommand wingrid-left.sh
-!Control 2 :ExecCommand wingrid-right.sh
-!Control 3 :ExecCommand wingrid-top.sh
-!Control 4 :ExecCommand wingrid-bottom.sh
-Control 5 :ExecCommand wingrid-topleft.sh
-Control 6 :ExecCommand wingrid-topright.sh
-!Control 7 :ExecCommand wingrid-bottomleft.sh
-!Control 8 :ExecCommand wingrid-bottomright.sh
-!Control 9 :ExecCommand wingrid-maximize.sh
-
 !winmess
-Control 0 :ExecCommand $HOME/bin/winmess-place T
-Control 1 :ExecCommand $HOME/bin/winmess-place L0
-Control 2 :ExecCommand $HOME/bin/winmess-place R0
-Control 9 :ExecCommand $HOME/bin/winmess-place W
+Mod5 0 :ExecCommand $HOME/bin/winmess-place T
+Mod5 1 :ExecCommand $HOME/bin/winmess-place L0
+Mod5 2 :ExecCommand $HOME/bin/winmess-place R0
+Mod5 9 :ExecCommand $HOME/bin/winmess-place W
 ```
 Don't forget to add $HOME/bin if you install to the home.
 
