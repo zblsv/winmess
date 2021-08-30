@@ -59,7 +59,7 @@ Some Unix classics must be available...
    sudo chown $ME:$ME $HOME/.config/winmess.conf
    ```
 
-## Update to latest version
+## How to update to latest version
 
 Use git to fetch from the origin.
 See details here: [Getting changes from a remote repository](https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository)
