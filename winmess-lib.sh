@@ -4,15 +4,15 @@
 # Display error message.
 error() {
     YADBOX="--title=WinMess --image=error --button=OK:1 --buttons-layout=center --center --borders=10"
-    [ "$DISPLAY" != "" ] && yad $YADBOX --text="$1"
+    [ ! -z "$DISPLAY" ] && yad $YADBOX --text="$1"
 }
 
-# Show usage if requested.
+# Show usage if requested.  PROG* vars must be defined.
 init_help() {
     # When requested show information about script.
     if [ "$1" = '-h' ] || [ "$1" = '--help' ]
     then
-       PROGNAME=$PROGNAME PROGVERSION=$PROGVERSION winmess-usage
+       PROGNAME=$PROGNAME PROGVERSION=$PROGVERSION $PROGDIR/winmess-usage
        exit 0
     fi
 }
@@ -42,4 +42,11 @@ init_res() {
     # Reference used by window manager when positioning the window (always
     # zero).
     GRAVITY=0
+}
+
+# Extract field value.
+field() {
+    local TAIL=${2#*$1:}
+    local SQSP="$(IFS=$' \t\n' echo $TAIL)"
+    echo ${SQSP%% *}
 }

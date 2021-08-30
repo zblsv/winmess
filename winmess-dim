@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 # 2021-08-27   WinMess Inspired by WinGrid-antiX
-#              Get screen resolutions.
+#              Get screen resolutions and compose the placement hint.
 
-PROGNAME=${0##*/}
-PROGDIR=${0%/*}
+PROGNAME="${0##*/}"
+PROGDIR="${0%/*}"
 PROGVERSION=$($PROGDIR/winmess-version)
+LIBDIR="$PROGDIR/../lib"
 
 # Utility functions
 # -----------------
 
 # Location of utility functions.
-LIBFILE="$PROGDIR/winmess-lib.sh"
+LIBFILE="$LIBDIR/winmess-lib.sh"
+
 . $LIBFILE
 
 # Help and Information
@@ -25,15 +27,43 @@ init_help $1
 CONFIGFILE="$HOME/.config/winmess.conf"
 
 # Obtain the user specifiable configuration.
-. $CONFIGFILE
+if [ -f $CONFIGFILE ]
+then
+    . $CONFIGFILE
+else
+    # Display an error message and exit.
+    ERRMSG=" $CONFIGFILE \n Was not found \n\n Exiting..."
+    error "$ERRMSG"
+    exit 1
+fi
 
 # Initialize screen resolutions.
 init_res
 
+# Call xwininfo.
 cat <<EOS
 
-Screen Resolutions
-   For use in $HOME/.config/winmess.conf
+Screen Resolutions and the Placement Hint
+    For use in $HOME/.config/winmess.conf
+
+Please, click on a window to see the hint to it's placement...
+EOS
+INFO=$(xwininfo)
+AX=$(field 'Absolute upper-left X' "$INFO")
+AY=$(field 'Absolute upper-left Y' "$INFO")
+RX=$(field 'Relative upper-left X' "$INFO")
+RY=$(field 'Relative upper-left Y' "$INFO")
+
+X=$(($AX-$RX))
+Y=$(($AY-$RY))
+
+W=$(field Width "$INFO")
+H=$(field Height "$INFO")
+
+cat <<EOS
+
+The placement hint: "x:$X y:$Y w:$W h:$H"
+    May be some mino inaccuracies in values (less than 10 pixels)...
 
 Screen width: $SCREENWIDTH
 Screen height: $SCREENHEIGHT

@@ -44,18 +44,22 @@ Some Unix classics must be available...
    git clone https://github.com/zblsv/winmess.git
    ```
 2. Read all the code for security holes, fatal errors, performance glitches.
-3. Install into the home (recomended).
+3. Install into the Home (recomended).
    ```sh
    . install.sh
    ```
+   Or into the Dark Home (preferred).
+   ```sh
+   . install.sh ~/.local
+   ```
    Or into the system (not recomended).
    ```sh
-   sudo . install.sh /usr/local/bin
+   sudo . install.sh /usr/local
    ME=$(whoami)
    sudo chown $ME:$ME $HOME/.config/winmess.conf
    ```
 
-### Update to latest version
+## Update to latest version
 
 Use git to fetch from the origin.
 See details here: [Getting changes from a remote repository](https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository)
@@ -70,10 +74,50 @@ git tag -l
 git checkout tags/0.1.0
 ```
 
+## How to uninstall
+
+Remember where you have installed WinMess (The Home, The Dark Home, The System...).
+```sh
+. uninstall.sh
+```
+Or
+```sh
+. uninstall.sh ~/.local
+```
+Or
+```sh
+. uninstall.sh /usr/local
+```
 
 ## Usage
 
 In ~/.config/winmess.conf define your placement hints.  Some examples given.
+
+winmess.conf is a bash script.
+So all the bash syntax is valid.
+
+The hint is a string value in the HINT map of the form
+<br>"x:$X y:$Y w:$W h:$H"
+<br>where $X and $Y are the left and top edges of the window in pixels.
+$W and $H are its windth and height.
+
+You assign an arbitrary name to this string.
+Let's say, the "T" for narrow center area hint, for instance.
+Then
+```sh
+HINT[T]="x:350 y:0 w:1100 h:1010"
+```
+defines this placement.
+
+Now you can run
+```sh
+~/bin/winmess-place T
+```
+in a terminal emulator and its window will be adjusted accordingly.
+
+To guess this values, place a window in desired position with the mouse then run ~/bin/winmess-dim utility in terminal.
+Click the window.
+winmess-dim will show the hint string and screen dimentions.
 
 Define hotkeys that winmess-place will run with your window manager.  I use Fluxbox on antiX Linux.
 In my ~/.fluxbox/keys is:
@@ -84,7 +128,7 @@ Mod5 1 :ExecCommand $HOME/bin/winmess-place L0
 Mod5 2 :ExecCommand $HOME/bin/winmess-place R0
 Mod5 9 :ExecCommand $HOME/bin/winmess-place W
 ```
-Don't forget to add $HOME/bin if you install to the home.
+Don't forget to add $HOME/bin or ~/bin if you install to the Home (or ~/.local/bin if you install there).
 
 
 ## Roadmap

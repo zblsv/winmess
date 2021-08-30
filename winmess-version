@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # 2021-08-27   WinMess inspired by WinGrid-antiX
 #              Print the version on the screen.
-WINMESSVERSION='0.1.4'
+WINMESSVERSION='0.2.0'
 echo $WINMESSVERSION

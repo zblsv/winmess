@@ -2,12 +2,13 @@
 # 2021-08-27   WinMess inspired by WinGrid-antiX
 #              Place and resize active window.
 
-PROGNAME=${0##*/}
-PROGDIR=${0%/*}
+PROGNAME="${0##*/}"
+PROGDIR="${0%/*}"
 PROGVERSION=$($PROGDIR/winmess-version)
+LIBDIR="$PROGDIR/../lib"
 
 # Location of utility functions.
-LIBFILE="$PROGDIR/winmess-lib.sh"
+LIBFILE="$LIBDIR/winmess-lib.sh"
 
 # Load the utilities.
 . $LIBFILE
@@ -40,11 +41,12 @@ wmctrl -r :ACTIVE: -b remove,maximized_horz,maximized_vert
 wmctrl -r :ACTIVE: -b remove,fullscreen
 
 HINT_NAME="$1"
+HINT_VALUE="${HINT[$HINT_NAME]}"
 
-LEFT="${HINT[x$HINT_NAME]}"
-TOP="${HINT[y$HINT_NAME]}"
-WIDTH="${HINT[w$HINT_NAME]}"
-HEIGHT="${HINT[h$HINT_NAME]}"
+LEFT=$(field x "$HINT_VALUE")
+TOP=$(field y "$HINT_VALUE")
+WIDTH=$(field w "$HINT_VALUE")
+HEIGHT=$(field h "$HINT_VALUE")
 
 # Distance from screen top edge to top edge of the window.
 OFFSETTOP=$(($TOP+$GAPTOP))
