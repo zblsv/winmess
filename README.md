@@ -102,7 +102,7 @@ The hint is a string value in the HINT map of the form
 $W and $H are its windth and height.
 
 You assign an arbitrary name to this string.
-Let's say, the "T" for narrow center area hint, for instance.
+Let's say, the "T" hint for narrow center area of my 1920x1080 monitor, for instance.
 Then
 ```sh
 HINT[T]="x:350 y:0 w:1100 h:1010"
