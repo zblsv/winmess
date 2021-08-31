@@ -96,7 +96,7 @@ Or
 ```
 Or
 ```sh
-. uninstall.sh /usr/local
+sudo . uninstall.sh /usr/local
 ```
 
 ## Usage
